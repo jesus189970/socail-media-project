@@ -1,0 +1,47 @@
+body{
+
+}
+
+.form {
+    border: solid 1px black;
+    margin: 10px;
+    padding: 10px;
+}
+
+input {
+    margin: 10px;
+}
+
+.f-one {
+    display: inline-block;
+}
+
+.f-two {
+    display: inline-block;
+}
+
+.friends_table {
+    border: 1px black solid;
+}
+
+.friends_row{
+    border: 1px solid black;
+}
+
+h1 {
+    display: inline-block;
+}
+
+.logout {
+    display: inline-block;
+    margin-left: 900px;
+}
+
+#logout {
+    margin-left: 10px;
+}
+
+.home {
+    display: inline-block;
+    margin-left: 900px;
+}

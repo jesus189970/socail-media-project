@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Registration</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Welcome</h1>
+    <div class='form' id='f-one'>
+    <h2>Register</h2>
+    {% if messages %}
+    <ul>
+        {% for error in messages %}
+        <li>{{error}}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+        <form action="/registration" method="POST">
+            {% csrf_token %}
+            <label for="name">Name:</label>
+            <input type="text" name="name">
+            <br>
+            <label for="alias">Alias:</label>
+            <input type="text" name="alias">
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" name="email">
+            <br>
+            <label for="pw">Password:</label>
+            <input type="password" name="pw">
+            <br>
+            <label for="conf_pw">Confirm Password:</label>
+            <input type="password" name="conf_pw">
+            <br>
+            <label for="birth">Date of Birth:</label>
+            <input type="date" name="birth">
+            <br>
+            <input type="submit" value="Register">
+        </form>
+    </div>
+    <div class='form' id='f-two'>
+        <h2>Login</h2>
+        <form action="/login" method="POST">
+            {% csrf_token %}
+            <label for="email">Email:</label>
+            <input type="email" name='email'>
+            <label for="pw">Password:</label>
+            <input type="password" name='pw'>
+            <input type="submit" value="login">
+        </form>
+    </div>
+</body>
+</html>

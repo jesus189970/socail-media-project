@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div>
+        <h1>Hello, {{request.session.user_name}}!</h1>
+        <a href="/logout" class='logout'>Logout</a>
+        <h4>Here is a list of all your friends:</h4>
+    </div>
+    
+    <div>
+        <p>Heres a list of your friends:</p>
+        <table class='friends_table'>
+            <thead>
+                <tr>
+                    <td>Alias</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            {% for alias in user %}
+            <tr>
+                <td>{{alias.alias}}</td>
+                <td><a href="/user/{{alias.id}}">View Profile</a> <a href="/remove_friend/{{alias.id}}">Remove as Friend</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <br>
+    <br>
+    <div>
+        <p>Other Users not on your friend's list:</p>
+        <table class='friends_table'>
+            <thead>
+                <tr>
+                    <td>Alias</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+                {% for alias in users %}
+                    {% if alias not in user %}
+                        <tr>
+                            <td><a href="/user/{{alias.id}}">{{alias.alias}}</a></td>
+                            <td><a href="/add_friend/{{alias.id}}">Add as Friend</a></td>
+                        </tr>
+                            
+                    {% endif %}
+                {% endfor %}
+            
+        </table>
+    </div>
+</body>
+</html>
